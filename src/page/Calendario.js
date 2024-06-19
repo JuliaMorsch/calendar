@@ -16,6 +16,12 @@ function Calendario() {
     const [eventos, setEventos] = useState(EventsPattern);
     const [eventosSelecionados, setEventosSelecionados] = useState(null);
 
+    const EventStyle = (event) => ({
+        style:{
+            backgroundColor: event.color,
+        }
+    })
+
     const onEventDrop = (data) => {
         const {start, end} = data;
         const updatedEvents = eventos.map((event) => {
@@ -56,6 +62,10 @@ function Calendario() {
     }
 
     return (
+        <div className="tela">
+        <div className="toolbar">
+            <p>Ferramentas</p>
+        </div>
        <div className="calendar">
             <DragAndDropCalendar
                 defaultDate={moment().toDate()}
@@ -65,9 +75,10 @@ function Calendario() {
                 resizable
                 onEventDrop={onEventDrop}
                 onEventResize={onEventResize}
-
                 onSelectEvent={handleEventClick}
+                eventPropGetter={EventStyle}
             />
+        </div>
             {eventosSelecionados && (
                 <EventModal
                 evento={eventosSelecionados}
