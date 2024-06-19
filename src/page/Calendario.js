@@ -63,7 +63,7 @@ function Calendario() {
 
     return (
         <div className="tela">
-        <div className="toolbar">
+        <div className="tollbar">
             <p>Ferramentas</p>
         </div>
        <div className="calendar">
@@ -78,7 +78,7 @@ function Calendario() {
                 onSelectEvent={handleEventClick}
                 eventPropGetter={EventStyle}
                 components={{
-                    toolbar: CustomTollbar,
+                    tollbar: CustomTollbar,
                 }}
             />
         </div>
@@ -100,7 +100,7 @@ const CustomTollbar = ({label, onView, onNavigate, views}) =>{
     const [itemText, setItemText] = useState('month');
 
     return(
-        <div className="toolbar-container">
+        <div className="tollbar-container">
             <h1 className="mesAno">{label}</h1>
 
             <div className="dirtop">
