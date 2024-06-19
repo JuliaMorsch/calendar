@@ -29,7 +29,20 @@ function Calendario() {
         setEventos(updatedEvents)
     }
            
-        
+    const onEventResize = (data => {
+        const {start, end} = data;
+        const updatedEvents = eventos.map((event) => {
+            if(event.id === data.event.id){
+                return {
+                    ...event, 
+                    start: new Date(start), 
+                    end: new Date(end)
+                };
+            }
+            return event;
+        });
+        setEventos(updatedEvents)
+    })
     
 
     return (
@@ -41,7 +54,7 @@ function Calendario() {
                 localizer={localizer}
                 resizable
                 onEventDrop={onEventDrop}
-                //onEventResize={}
+                onEventResize={onEventResize}
             />
        </div>
     )
