@@ -77,6 +77,9 @@ function Calendario() {
                 onEventResize={onEventResize}
                 onSelectEvent={handleEventClick}
                 eventPropGetter={EventStyle}
+                components={{
+                    toolbar: CustomTollbar,
+                }}
             />
         </div>
             {eventosSelecionados && (
@@ -87,6 +90,38 @@ function Calendario() {
             )}
        </div>
     )
+}
+
+const CustomTollbar = ({label, onView, onNavigate, views}) =>{
+    const handleNavigate = (action) =>{
+        onNavigate(action);
+    }
+
+    const [itemText, setItemText] = useState('month');
+
+    return(
+        <div className="toolbar-container">
+            <h1 className="mesAno">{label}</h1>
+
+            <div className="dirtop">
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="buttom" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        {itemText}
+                    </button>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {views.map((view, index) => (
+                            <div key={index}>
+                                <li>
+                                    <button className="dropdown-item" onClick={() =>onView(views)}>{view}</button>
+                                </li>
+                            </div>
+                        ))
+                    }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Calendario;
