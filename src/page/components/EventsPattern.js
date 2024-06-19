@@ -1,4 +1,4 @@
-const EventosPadrão = [{
+const EventsPattern = [{
     id: 1, 
     title: 'teste',
     start: new Date(2024,5,17,10,0), 
@@ -17,4 +17,4 @@ const EventosPadrão = [{
     tipo: 'teste2',
 }]
 
-export default EventosPadrao;
+export default EventsPattern;
