@@ -63,8 +63,8 @@ function Calendario() {
 
     return (
         <div className="tela">
-        <div className="tollbar">
-            <p>Ferramentas</p>
+        <div className="toolbar">
+        <p>Ferramentas</p>
         </div>
        <div className="calendar">
             <DragAndDropCalendar
@@ -78,7 +78,7 @@ function Calendario() {
                 onSelectEvent={handleEventClick}
                 eventPropGetter={EventStyle}
                 components={{
-                    tollbar: CustomTollbar,
+                    toolbar: CustomToolbar,
                 }}
             />
         </div>
@@ -92,7 +92,7 @@ function Calendario() {
     )
 }
 
-const CustomTollbar = ({label, onView, onNavigate, views}) =>{
+const CustomToolbar = ({label, onView, onNavigate, views}) =>{
     const handleNavigate = (action) =>{
         onNavigate(action);
     }
@@ -100,24 +100,28 @@ const CustomTollbar = ({label, onView, onNavigate, views}) =>{
     const [itemText, setItemText] = useState('month');
 
     return(
-        <div className="tollbar-container">
+        <div className="toolbar-container">
             <h1 className="mesAno">{label}</h1>
 
             <div className="dirtop">
                 <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="buttom" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         {itemText}
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         {views.map((view, index) => (
                             <div key={index}>
                                 <li>
-                                    <button className="dropdown-item" onClick={() =>onView(views)}>{view}</button>
+                                    <button className="dropdown-item" onClick={() =>onView(view) + setItemText(view)}>{view}</button>
                                 </li>
+                                {index === 2 && <hr className="dropdown-divider"></hr>}
                             </div>
-                        ))
-                    }
+                        ))}
                     </ul>
+                </div>
+
+                <div className="toolbar-navegation">
+                    <button className="btn btn-secondary btn-ls mr-2 border-0" onClick={handleNavigate('TODAY')}>Hoje</button>
                 </div>
             </div>
         </div>
