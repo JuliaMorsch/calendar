@@ -93,9 +93,7 @@ function Calendario() {
 }
 
 const CustomToolbar = ({label, onView, onNavigate, views}) =>{
-    const handleNavigate = (action) =>{
-        onNavigate(action);
-    }
+
 
     const [itemText, setItemText] = useState('month');
 
@@ -113,6 +111,7 @@ const CustomToolbar = ({label, onView, onNavigate, views}) =>{
                             <div key={index}>
                                 <li>
                                     <button className="dropdown-item" onClick={() =>onView(view) + setItemText(view)}>{view}</button>
+                                    <button className=""></button>
                                 </li>
                                 {index === 2 && <hr className="dropdown-divider"></hr>}
                             </div>
@@ -121,7 +120,9 @@ const CustomToolbar = ({label, onView, onNavigate, views}) =>{
                 </div>
 
                 <div className="toolbar-navegation">
-                    <button className="btn btn-secondary btn-ls mr-2 border-0" onClick={handleNavigate('TODAY')}>Hoje</button>
+                    <button className="btn btn-secondary btn-ls mr-2 border-0" onClick={() => onNavigate('TODAY')}>Hoje</button>
+                    <button className="btn btn-sm mr-2 text-secondary" onClick={() => onNavigate('PREV')}><i class="bi bi-caret-left"></i></button>
+                    <button className="btn btn-sm mr-2 text-secondary" onClick={() => onNavigate('NEXT')}><i class="bi bi-caret-right"></i></button>
                 </div>
             </div>
         </div>

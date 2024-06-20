@@ -16,6 +16,14 @@
    width: 80%;
 }
 
+/*Head Mod*/
+.toolbal-container{
+   display: flex;
+   height: 10vh;
+   align-items: center;
+}
+
+/*Modal*/
 .modal{
    position: fixed;
    top: 0;
