@@ -62,10 +62,14 @@ function Calendario() {
 
     }
 
+    const handleAdicionar = (novoEvento) =>{
+        setEventos([...eventos, {...novoEvento, id:eventos.length + 1}])
+    }
+
     return (
         <div className="tela">
         <div className="toolbar p-4">
-            <Adicionar />
+            <Adicionar onAdicionar={handleAdicionar}/>
         </div>
        <div className="calendar">
             <DragAndDropCalendar
