@@ -16,11 +16,26 @@
    width: 80%;
 }
 
-/*Head Mod*/
+/*Header Mod*/
 .toolbal-container{
    display: flex;
    height: 10vh;
    align-items: center;
+   padding-left: 50px;
+}
+
+.mesAno{
+   width: 50%;
+   color: #f3f3f3;
+   justify-content: flex-start;
+}
+
+.dirtop{
+   width: 50%;
+   justify-content: end;
+   display: flex;
+   align-items: center;
+   padding-right: 50px;
 }
 
 /*Modal*/

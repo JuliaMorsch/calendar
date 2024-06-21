@@ -4,9 +4,10 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import './components/Components-Calendario-css.css';
+import "./components/Components-Calendario-css.css";
 import EventsPattern from "./components/EventsPattern";
 import EventModal from "./components/EventModal";
+import Adicionar from "./components/adicionar/Adicionar";
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
@@ -63,8 +64,8 @@ function Calendario() {
 
     return (
         <div className="tela">
-        <div className="toolbar">
-        <p>Ferramentas</p>
+        <div className="toolbar p-4">
+            <Adicionar />
         </div>
        <div className="calendar">
             <DragAndDropCalendar
@@ -119,9 +120,9 @@ const CustomToolbar = ({label, onView, onNavigate, views}) =>{
                     </ul>
                 </div>
 
-                <div className="toolbar-navegation">
+                <div className="toolbar-navegation" style={{marginLeft: '15px'}}>
                     <button className="btn btn-secondary btn-ls mr-2 border-0" onClick={() => onNavigate('TODAY')}>Hoje</button>
-                    <button className="btn btn-sm mr-2 text-secondary" onClick={() => onNavigate('PREV')}><i class="bi bi-caret-left"></i></button>
+                    <button className="btn btn-sm mr-2 text-secondary" onClick={() => onNavigate('PREV')} style={{marginLeft: '15px'}}><i class="bi bi-caret-left"></i></button>
                     <button className="btn btn-sm mr-2 text-secondary" onClick={() => onNavigate('NEXT')}><i class="bi bi-caret-right"></i></button>
                 </div>
             </div>
