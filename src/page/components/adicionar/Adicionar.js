@@ -28,7 +28,7 @@ function Adicionar (onAdicionar){
             const startDate = new Date(novoEvento.start);
             const endDate = new Date(novoEvento.end);
 
-            if(startDate => endDate){
+            if(startDate >= endDate){
                 alert("A data de início do evento deve ser anterior à data de término.");
                 return;
             }
@@ -101,7 +101,7 @@ function Adicionar (onAdicionar){
                         variant="success"
                         type="submit"
                         style={{marginTop: '10px', marginRight:'10px'}}
-                        disabled={!novoEvento.title || !novoEvento.start || novoEvento.end}
+                        disabled={!novoEvento.title || !novoEvento.start || !novoEvento.end}
                     >Salvar</Button>
             </Form>
         </div>
