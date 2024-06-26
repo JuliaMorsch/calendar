@@ -1,48 +1,48 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Collapse } from "react-bootstrap";
 
-const EventModal = ({evento, onClose, onDelete, onUpdate}) =>{
+const EventModal = ({evento, onClose, onDelete, onUpdate}) => {
     
     const [EditedEvent, setEditedEvent] = useState({...evento});
     const [Collapsed, setCollapsed] = useState(true);
 
-    const handleInputChange = (e) =>{
+    const handleInputChange = (e) => {
         const {name, value} = e.target;
         setEditedEvent({...EditedEvent, [name]:value});
-    }
+    };
 
-    const handleColorChange = (e) =>{
+    const handleColorChange = (e) => {
         setEditedEvent({...EditedEvent, color:e.target.value});
-    }
+    };
 
-    const handleStartDateChange = (e) =>{
+    const handleStartDateChange = (e) => {
         const startDate = new Date(e.target.value);
         if(startDate <= EditedEvent.end){
             setEditedEvent({...EditedEvent, start:startDate});
         }
-    }
+    };
 
-    const handleEndtDateChange = (e) =>{
+    const handleEndtDateChange = (e) => {
         const endDate = new Date(e.target.value);
-        if(endDate <= EditedEvent.start){
+        if(endDate >= EditedEvent.start){
             setEditedEvent({...EditedEvent, end:endDate});
         }
-    }
+    };
 
-    const handleDelete = () =>{
+    const handleDelete = () => {
         onDelete(evento.id)
-    }
+    };
 
     const handleUpdate = () => {
         onUpdate(EditedEvent);
         onClose();
-    }
+    };
 
-    const adjustDate = (date) =>{
+    const adjustDate = (date) => {
         const adjustedDate = new Date(date);
         adjustedDate.setHours(adjustedDate.getHours() - 3);
         return adjustedDate.toISOString().slice(0,-8);
-    }
+    };
 
     return(
         <Modal show={true} onHide={onClose}>
