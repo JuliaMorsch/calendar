@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Calendario from './page/components/calendario/Calendario';
+import Calendario from './components/calendario/Calendario';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
